@@ -7,7 +7,7 @@ var app = express();
 hbs.registerPartials( __dirname + '/views/partials');
 app.set( 'view engine', 'hbs' );
 
-app.use( ( req, res,next ) => {
+app.use( ( req, res, next ) => {
     var now = new Date().toString();
     
     var log = `${now}: ${req.method} ${req.url}`;
@@ -58,6 +58,12 @@ app.get( '/about', ( req, res ) => {
         pageTitle : "About Page :)"
     } );
 });
+
+app.get( '/projects', ( req, res ) => {
+    res.render( 'projects.hbs',{
+        pageTitle : "Project Page :)"
+    } );
+} );
 
 app.get( '/bad', ( req, res ) => {
     res.send( {
